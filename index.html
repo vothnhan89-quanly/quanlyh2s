@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Quản lý Đơn hàng & Sản phẩm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <h1>📋 Hệ thống quản lý bán hàng</h1>
+  <div id="login-panel">
+    <input type="password" id="apiKeyInput" placeholder="Nhập mã PIN quản trị">
+    <button id="loginBtn">Đăng nhập</button>
+  </div>
+  <div id="main-content" style="display:none;">
+    <div class="tabs">
+      <button data-tab="donvi" class="active">🏢 Đơn vị</button>
+      <button data-tab="lienhe">📞 Liên hệ</button>
+      <button data-tab="donhang">📦 Đơn hàng</button>
+      <button data-tab="sanpham">🛒 Sản phẩm</button>
+    </div>
+    <div id="donvi" class="tab-content active">
+      <div class="toolbar"><button class="add-btn">+ Thêm đơn vị</button></div>
+      <div class="table-wrapper"><table id="donvi-table"><thead><tr><th>ID</th><th>Tên đơn vị</th><th>Tỉnh</th><th>Huyện</th><th>Thao tác</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div id="lienhe" class="tab-content">
+      <div class="toolbar"><button class="add-btn">+ Thêm liên hệ</button></div>
+      <div class="table-wrapper"><table id="lienhe-table"><thead><tr><th>ID</th><th>Đơn vị</th><th>Khách hàng</th><th>Điện thoại</th><th>Thao tác</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div id="donhang" class="tab-content">
+      <div class="toolbar"><button class="add-btn">+ Thêm đơn hàng</button></div>
+      <div class="table-wrapper"><table id="donhang-table"><thead><tr><th>ID</th><th>Số HĐ</th><th>Đơn vị quản lý</th><th>Tổng</th><th>Thao tác</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div id="sanpham" class="tab-content">
+      <div class="toolbar"><button class="add-btn">+ Thêm sản phẩm</button></div>
+      <div class="table-wrapper"><table id="sanpham-table"><thead><tr><th>ID</th><th>Tên SP</th><th>Model</th><th>Đơn giá</th><th>Thao tác</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+</div>
+<!-- Modal thêm/sửa -->
+<div id="modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3 id="modal-title"></h3>
+    <div id="modal-form"></div>
+    <button id="modal-save">Lưu</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
