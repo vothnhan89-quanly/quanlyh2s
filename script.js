@@ -1,6 +1,6 @@
 // ==================== CẤU HÌNH BẮT BUỘC THAY ĐỔI ====================
-const API_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec'; // 👈 THAY BẰNG URL CỦA BẠN
-const CORRECT_API_KEY = 'YOUR_SECRET_PASSWORD_123'; // 👈 PHẢI GIỐNG API_KEY TRONG APPS SCRIPT
+const API_URL = 'https://script.google.com/macros/s/AKfycbxNsTFOYI5mDlMK-jbIwxZj1UdE5p9M5WFFBSUuNbyVbihZfELxnq8Jl92gW_WS62G7oA/exec'; // 👈 THAY BẰNG URL CỦA BẠN
+const CORRECT_API_KEY = '123456'; // 👈 PHẢI GIỐNG API_KEY TRONG APPS SCRIPT
 
 let API_KEY = localStorage.getItem('api_key') || '';
 
