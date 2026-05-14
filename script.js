@@ -1,28 +1,24 @@
-// ==================== CẤU HÌNH BẮT BUỘC THAY ĐỔI ====================
-const API_URL = 'https://script.google.com/macros/s/AKfycbxNsTFOYI5mDlMK-jbIwxZj1UdE5p9M5WFFBSUuNbyVbihZfELxnq8Jl92gW_WS62G7oA/exec'; // 👈 THAY BẰNG URL CỦA BẠN
-const CORRECT_API_KEY = '123456'; // 👈 PHẢI GIỐNG API_KEY TRONG APPS SCRIPT
+// ==================== CẤU HÌNH ====================
+const API_URL = '/api/proxy';  // Đây là endpoint proxy trên Vercel
+const CORRECT_API_KEY = '123456'; // ⚠️ PHẢI GIỐNG API_KEY TRONG APPS SCRIPT
 
 let API_KEY = localStorage.getItem('api_key') || '';
 
-// Hàm gọi API xử lý response JSON lồng trong HTML
+// Hàm gọi API qua proxy (không còn lỗi CORS)
 async function callApi(action, method = 'GET', payload = null) {
   let url, options = { method, headers: { 'Content-Type': 'application/json' } };
+  
   if (method === 'GET') {
     url = `${API_URL}?action=${action}&apiKey=${API_KEY}`;
   } else {
     url = API_URL;
     options.body = JSON.stringify({ action, apiKey: API_KEY, ...payload });
   }
+
   const response = await fetch(url, options);
-  const text = await response.text();
-  try {
-    const data = JSON.parse(text);
-    if (data.error) throw new Error(data.error);
-    return data;
-  } catch (e) {
-    console.error('Server response:', text);
-    throw new Error('Dữ liệu từ server không hợp lệ');
-  }
+  const data = await response.json();
+  if (data.error) throw new Error(data.error);
+  return data;
 }
 
 // ========== LOAD & RENDER DỮ LIỆU ==========
